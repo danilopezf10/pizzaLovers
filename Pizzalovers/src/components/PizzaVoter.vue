@@ -10,6 +10,8 @@
 
 
 <script>
+import axios from 'axios';
+
 export default {
     name: 'PizzaVoter',
     data() {
@@ -21,12 +23,43 @@ export default {
     methods: {
         onSubmit(event) {
             event.preventDefault()
-            alert(JSON.stringify(this.votes))
-            this.$router.push('/vote')
+
+            const config = {
+                headers: { Authorization: "Bearer " + this.$store.getters.getToken }
+            };
+            const body = {
+                    "votes" : this.votes
+            }
+
+            // update user with new number of votes
+            axios.put("http://localhost:4000/users/" + this.$store.getters.getUserId, body, config)
+                .then( (response ) => {
+                    console.log(response)
+                    this.$store.commit("incrementKey") //re renders UsersChart by changing its key
+                })
+                .catch(( error ) => {
+                    console.log(error)
+                    alert(error)
+                });
         },
         increment () {
             this.votes++;
         }
+    },
+    mounted(){
+        const config = {
+            headers: { Authorization: "Bearer " + this.$store.getters.getToken }
+        };
+
+        axios.get("http://localhost:4000/users/" + this.$store.getters.getUserId, config)
+            .then( (response) => {
+                console.log(response)
+                this.votes =  response.data.votes
+            })
+            .catch(( error ) => {
+                console.log(error)
+                alert(error)
+            });
     }
 
 }

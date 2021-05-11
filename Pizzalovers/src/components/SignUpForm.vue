@@ -5,7 +5,7 @@
       <b-form @submit="onSubmit" v-if="show">
         <b-form-group id="input-group-1" label="Username:" label-for="input-1">
           <b-form-input
-            id="input-1"
+            id="signupinput-1"
             v-model="form.username"
             placeholder="Enter username"
             required
@@ -14,7 +14,7 @@
 
         <b-form-group id="input-group-2" label="Password:" label-for="input-2">
           <b-form-input
-            id="input-2"
+            id="signupinput-2"
             v-model="form.password"
             type="password"
             placeholder="Enter password"
@@ -48,17 +48,17 @@
     methods: {
       onSubmit(event) {
         event.preventDefault()
-        //let router = this.$router
+
         axios.post('http://localhost:4000/users/register',this.form)
-          .then(function( response ){
+          .then(( response ) => {
             console.log(response)
             alert("You've been registered successfully")
-            //router.push('/vote')
-          }).catch(function( error ){
+           // this.$router.push('/vote')
+          })
+          .catch(( error ) => {
             console.log(error)
             alert(error)
           });   
-       // this.$router.push('/vote')
       }
     }
   }

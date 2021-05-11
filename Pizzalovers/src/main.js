@@ -10,6 +10,7 @@ import VotePage from './pages/VotePage.vue'
 import 'bootstrap/dist/js/bootstrap.bundle';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+import { store } from './store';
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue);
@@ -29,4 +30,5 @@ const router = new VueRouter({
 new Vue({
   render: h => h(App),
   router,
+  store: store
 }).$mount('#app')
