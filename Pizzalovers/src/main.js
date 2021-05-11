@@ -11,7 +11,6 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
-
 Vue.config.productionTip = false
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
@@ -26,7 +25,6 @@ const router = new VueRouter({
   mode : 'history', //removes # from URL
   routes
 })
-
 
 new Vue({
   render: h => h(App),

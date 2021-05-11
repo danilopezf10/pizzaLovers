@@ -3,12 +3,12 @@
       <h2 id="header">Log in</h2>
       <b-card>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <b-form-group id="input-group-1" label="Email address:" label-for="input-1">
+      <b-form-group id="input-group-1" label="Username:" label-for="input-1">
         <b-form-input
           id="input-1"
-          v-model="form.email"
-          type="email"
-          placeholder="Enter email"
+          v-model="form.username"
+          type="text"
+          placeholder="Enter username"
           required
         ></b-form-input>
       </b-form-group>
@@ -23,49 +23,42 @@
         ></b-form-input>
       </b-form-group>
 
-
-
       <b-button type="submit" variant="primary" class="mt-2">Go</b-button>
     </b-form>
     </b-card>
-    <!--
-    <b-card class="mt-3" header="Form Data Result">
-      <pre class="m-0">{{ form }}</pre>
-    </b-card>-->
   </div>
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
     name: 'LoginForm',
     data() {
       return {
         form: {
-          email: '',
+          username: '',
           password: '',
         },
         show: true
-      }
+        }
     },
     methods: {
       onSubmit(event) {
         event.preventDefault()
-        alert(JSON.stringify(this.form))
-        this.$router.push('/vote')
-      },
-      onReset(event) {
-        event.preventDefault()
-        // Reset our form values
-        this.form.email = ''
-        this.form.name = ''
-        this.form.food = null
-        this.form.checked = []
-        // Trick to reset/clear native browser form validation state
-        this.show = false
-        this.$nextTick(() => {
-          this.show = true
-        })
+        //const vm = this
+        //axios.get('https://localhost:5001/api/Voters')
+        axios.post("http://localhost:4000/users/authenticate", this.form)
+                .then( (response )=>{
+                  console.log(response)
+                  this.$router.push('/vote')
+                }).catch(( error )=>{
+                  console.log(error)
+                  alert("Username or password is incorrect")
+                });
+ 
       }
+      
     }
   }
 </script>
