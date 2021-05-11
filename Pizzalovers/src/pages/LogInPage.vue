@@ -8,8 +8,8 @@
 
 
 <script>
-import LoginForm from './LoginForm.vue'
-import SignUpForm from './SignUpForm.vue'
+import LoginForm from '../components/LoginForm.vue'
+import SignUpForm from '../components/SignUpForm.vue'
 
 export default {
   name: 'LogInPage',
@@ -19,7 +19,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

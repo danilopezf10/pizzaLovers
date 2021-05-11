@@ -6,8 +6,9 @@
   </div>
 </template>
 
+
 <script>
-import UsersChart from './UsersChart.vue'
+import UsersChart from '../components/UsersChart.vue'
 
 export default {
   name: 'HomePage',
@@ -16,7 +17,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

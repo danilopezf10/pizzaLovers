@@ -3,9 +3,9 @@ import App from './App.vue'
 import BootstrapVue from 'bootstrap-vue';
 import VueRouter from 'vue-router'
 
-import HomePage from './components/HomePage.vue'
-import LogInPage from './components/LogInPage.vue'
-import VotePage from './components/VotePage.vue'
+import HomePage from './pages/HomePage.vue'
+import LogInPage from './pages/LogInPage.vue'
+import VotePage from './pages/VotePage.vue'
 
 import 'bootstrap/dist/js/bootstrap.bundle';
 import 'bootstrap/dist/css/bootstrap.css';

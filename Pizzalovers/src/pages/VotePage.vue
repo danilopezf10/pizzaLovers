@@ -7,9 +7,10 @@
   </div>
 </template>
 
+
 <script>
-import PizzaVoter from './PizzaVoter.vue'
-import UsersChart from './UsersChart.vue'
+import PizzaVoter from '../components/PizzaVoter.vue'
+import UsersChart from '../components/UsersChart.vue'
 
 export default {
   name: 'VotePage',
